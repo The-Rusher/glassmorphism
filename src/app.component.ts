@@ -106,7 +106,7 @@ export class AppComponent implements OnInit {
   }
 
   generateParticles(): void {
-    const numParticles = 2000;
+    const numParticles = 1;
     const newParticles: Particle[] = [];
     for (let i = 0; i < numParticles; i++) {
       const size = Math.random() * 5 + 2;

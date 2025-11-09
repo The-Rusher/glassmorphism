@@ -1,4 +1,4 @@
-<main class="relative min-h-screen w-full flex items-center justify-center p-4 font-sans text-gray-800 bg-gray-100 overflow-hidden">
+<main class="p-10 relative min-h-screen w-full flex items-center justify-center p-4 font-sans text-gray-800 bg-gray-100 overflow-hidden">
   
   <!-- Background decorative shapes -->
   <div class="absolute top-0 left-0 -translate-x-1/4 -translate-y-1/4 w-96 h-96 bg-purple-300 rounded-full opacity-50 blur-3xl z-0"></div>
@@ -65,7 +65,7 @@
     </div>
 
     <!-- Call to Action Button -->
-    <div class="mt-12 text-center transition-all duration-1000 ease-in-out"
+    <div class="mt-12 pb-20 text-center transition-all duration-1000 ease-in-out"
          [class.opacity-0]="!ctaVisible()"
          [class.scale-90]="!ctaVisible()">
       <button (click)="openTelegram()" 

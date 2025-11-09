@@ -1,0 +1,77 @@
+<main class="relative min-h-screen w-full flex items-center justify-center p-4 font-sans text-gray-800 bg-gray-100 overflow-hidden">
+  
+  <!-- Background decorative shapes -->
+  <div class="absolute top-0 left-0 -translate-x-1/4 -translate-y-1/4 w-96 h-96 bg-purple-300 rounded-full opacity-50 blur-3xl z-0"></div>
+  <div class="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 w-96 h-96 bg-teal-300 rounded-full opacity-50 blur-3xl z-0"></div>
+
+  <!-- Background particles -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+    @for(particle of particles(); track $index) {
+      <div class="particle" 
+           [style.left]="particle.left" 
+           [style.width]="particle.size" 
+           [style.height]="particle.size" 
+           [style.animation-duration]="particle.animationDuration" 
+           [style.animation-delay]="particle.animationDelay">
+      </div>
+    }
+  </div>
+
+  <div class="w-full max-w-2xl mx-auto z-10">
+    <!-- Animated Title -->
+    <div class="text-center mb-16 transition-all duration-1000 ease-in-out"
+         [class.opacity-0]="!titleVisible()"
+         [class.-translate-y-10]="!titleVisible()">
+      <h1 class="pb-6 text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-teal-500 mb-2">
+        YOUR UK UNIVERSITY HELPER
+      </h1>
+      <p class="text-lg font-bold text-gray-600">
+        Doing Day/Night Work Shifts & Cannot Do University Homework & Projects? Don't Worry We'll Help!
+        100% AI Free, Plagiarism Free, Genuine Work. You will pass easily in university with our work.
+      </p>
+    </div>
+
+    <!-- Animated Timeline -->
+    <div class="relative">
+      <!-- The vertical line -->
+      <div class="absolute left-4 top-2 w-0.5 bg-gradient-to-b from-purple-200 via-teal-200 to-transparent -z-10 transition-all duration-500 ease-out"
+           [style.height.rem]="timelineLineHeight()"></div>
+      
+      @for (item of timelineItems(); track item.title; let i = $index) {
+        <div class="relative flex items-start mb-8 transition-all duration-700 ease-out" 
+             [class.opacity-0]="!item.visible" 
+             [class.translate-x-8]="!item.visible">
+          
+          <!-- Timeline Dot -->
+          <div class="flex-shrink-0 h-8 w-8 rounded-full bg-white border-2 flex items-center justify-center z-10 transition-colors duration-500"
+               [class.border-purple-400]="item.visible"
+               [class.border-gray-300]="!item.visible"
+               [class.animate-pulse-glow]="item.visible">
+            <div class="h-3 w-3 rounded-full transition-colors duration-500"
+                 [class.bg-purple-500]="item.visible"
+                 [class.bg-gray-300]="!item.visible">
+            </div>
+          </div>
+          
+          <!-- Timeline Card -->
+          <div class="ml-6 flex-grow">
+            <div class="bg-white/60 backdrop-blur-xl p-6 rounded-2xl border border-white/30 shadow-lg">
+              <h3 class="font-bold text-xl text-gray-900 mb-2">{{ item.title }}</h3>
+              <p class="text-gray-600">{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Call to Action Button -->
+    <div class="mt-12 text-center transition-all duration-1000 ease-in-out"
+         [class.opacity-0]="!ctaVisible()"
+         [class.scale-90]="!ctaVisible()">
+      <button (click)="openTelegram()" 
+              class="px-10 py-4 font-bold text-white rounded-full bg-gradient-to-r from-purple-500 to-teal-500 hover:from-purple-600 hover:to-teal-600 focus:outline-none focus:ring-4 focus:ring-purple-300 transition-all duration-300 transform hover:scale-105 shadow-2xl">
+        Message On Telegram
+      </button>
+    </div>
+  </div>
+</main>
